@@ -7,8 +7,17 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Image HorizontalAlignment="Left" Height="100" Margin="477,426,0,0" VerticalAlignment="Top" Width="100"/>
-
-    </Grid>
+    <RelativePanel x:Name="MainRelativePanel" Background="White">
+        <ProgressBar x:Name="HappinessProgress" HorizontalAlignment="Left" Height="80" VerticalAlignment="Top" Width="300"/>
+        <ProgressBar x:Name="HungryProgress" RelativePanel.RightOf="HappinessProgress" Margin="100,0,0,0" HorizontalAlignment="Left" Height="80" VerticalAlignment="Top" Width="300"/>
+        <ProgressBar x:Name="TiredProgress" RelativePanel.RightOf="HungryProgress" Margin="100,0,0,0" HorizontalAlignment="Left" Height="80" VerticalAlignment="Top" Width="300"/>
+        <ProgressBar x:Name="HornyProgress" RelativePanel.RightOf="TiredProgress" Margin="100,0,0,0" HorizontalAlignment="Left" Height="80" VerticalAlignment="Top" Width="300"/>
+        <Image x:Name="ImageGirlFriend" Width="{Binding ActualWidth, ElementName=MainRelativePanel, Mode=OneWay}" RelativePanel.Below="HappinessProgress" Source="Assets/Girl.jpg"  />
+        <Canvas x:Name="ThingsToGiveCanvas" RelativePanel.AlignVerticalCenterWith="ImageGirlFriend" Margin="0,350,0,0" Height="100" Opacity="0.6" Background="Black" Width="{Binding ActualWidth, ElementName=MainRelativePanel, Mode=OneWay}">
+            <StackPanel HorizontalAlignment="Left" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" VerticalAlignment="Top" Width="{Binding ActualWidth, ElementName=MainRelativePanel, Mode=OneWay}"/>
+        </Canvas>
+        <Canvas x:Name="ThingsToDoCanvas" RelativePanel.Below="ThingsToGiveCanvas" Margin="0,80,0,0" Height="100" Opacity="0.6" Background="Black" Width="{Binding ActualWidth, ElementName=MainRelativePanel, Mode=OneWay}">
+            <StackPanel HorizontalAlignment="Left" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" VerticalAlignment="Top" Width="{Binding ActualWidth, ElementName=MainRelativePanel, Mode=OneWay}"/>
+        </Canvas>
+    </RelativePanel>
 </Page>
