@@ -9,7 +9,7 @@
     xmlns:VM="using:MyVirtualGirlfriend.ViewModel"
     mc:Ignorable="d" Height="900" Width="1600">
     <Page.DataContext>
-        <VM:GirlfriendViewModel/>
+        <VM:GirlfriendViewModel />
     </Page.DataContext>
 
 
@@ -21,10 +21,10 @@
                      VerticalAlignment="Top" Width="300" Background="Black" Opacity="0.7"/>
         
         <ProgressBar x:Name="HungryProgress" RelativePanel.Below="HappinessProgress" Margin="0,20,0,0" 
-                     HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="300" Background="Black" Opacity="0.7" Minimum="0" Maximum="100" Value="{Binding MyGirlfriend.HungerMeter, Mode=OneWay}"/>
+                     HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="300" Background="Black" Opacity="0.7" Minimum="0" Maximum="100" Value="{Binding HungerMeter, Mode=OneWay}"/>
         
         <ProgressBar x:Name="TiredProgress" RelativePanel.Below="HungryProgress" Margin="0,20,0,0" 
-                     HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="300" Background="Black" Opacity="0.7"/>
+                     HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="300" Background="Black" Opacity="0.7" Minimum="0" Maximum="200" Value="{Binding TiredMeter, Mode=OneWay}"/>
         
         <ProgressBar x:Name="AngerProgress" RelativePanel.Below="TiredProgress" Margin="0,20,0,0" 
                      HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="300" Background="Black" Opacity="0.7"/>

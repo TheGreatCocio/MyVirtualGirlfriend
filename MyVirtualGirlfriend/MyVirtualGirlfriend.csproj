@@ -99,12 +99,16 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Girlfriend.cs" />
+    <Compile Include="Model\ValueEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="States\AngryState.cs" />
     <Compile Include="States\GirlfriendState.cs" />
     <Compile Include="States\HappyState.cs" />
     <Compile Include="States\HungryState.cs" />
     <Compile Include="States\IGirlfriendState.cs" />
+    <Compile Include="States\TiredState.cs" />
     <Compile Include="ViewModel\GirlfriendViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

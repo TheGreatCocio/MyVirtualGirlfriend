@@ -1,27 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MyVirtualGirlfriend.Model;
+using System.Diagnostics;
 
 namespace MyVirtualGirlfriend.States
 {
-    class HappyState : GirlfriendState
+    class AngryState : GirlfriendState
     {
-        public HappyState(Girlfriend girlfriend) : base(girlfriend)
+        public AngryState(Girlfriend girlfriend) : base(girlfriend)
         {
-
         }
 
-        public override async Task Happyness()
+        public override async Task Angryness()
         {
             while (true)
-            {                
-                Debug.WriteLine("Im Happy!");                
+            {
+                Debug.WriteLine("Im So Angry!");
                 await Task.Delay(1000);
             }
-        }        
+        }
     }
 }

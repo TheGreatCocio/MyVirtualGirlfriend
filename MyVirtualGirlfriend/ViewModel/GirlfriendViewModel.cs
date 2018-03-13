@@ -1,4 +1,6 @@
 ﻿using MyVirtualGirlfriend.Model;
+using MyVirtualGirlfriend.States;
+using MyVirtualGirlfriendd.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,43 +12,67 @@ using System.Threading.Tasks;
 
 namespace MyVirtualGirlfriend.ViewModel
 {
-    public class GirlfriendViewModel : INotifyPropertyChanged
+    public class GirlfriendViewModel : ViewModelBase
     {
         private Girlfriend myGirlfriend;
+        private int hungerMeter;
+        private int tiredMeter;
 
-        public Girlfriend MyGirlfriend {
-            get => myGirlfriend;
+        public int HungerMeter
+        {
+            get { return hungerMeter; }
             set
             {
-                myGirlfriend = value;
-                OnPropertyChanged("MyGirlfriend");
+                hungerMeter = value;
+                OnPropertyChanged();
             }
         }
 
+        public int TiredMeter
+        {
+            get { return tiredMeter; }
+            set
+            {
+                tiredMeter = value;
+                OnPropertyChanged();
+            }
+        }
 
-        public event PropertyChangedEventHandler PropertyChanged;        
-        
         public GirlfriendViewModel()
         {
             myGirlfriend = new Girlfriend("Michella");
 
-            Task happy = Task.Factory.StartNew(() => myGirlfriend.Happy());
-            Task hunger = Task.Factory.StartNew(() => myGirlfriend.Hungry());
+            myGirlfriend.ValueChanged += ValueChanged;
+            
             Task printer = Task.Factory.StartNew(() => Printer());
         }
+
+        
 
         public async Task Printer()
         {
             while (true)
             {
-                Debug.WriteLine(MyGirlfriend.HungerMeter);
+                Debug.WriteLine("Something");
                 await Task.Delay(500);
             }
         }
 
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        private void ValueChanged(object sender, EventArgs e)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            ValueEventArgs ea = (ValueEventArgs)e;
+            if (ea.State != null)
+            {
+                Debug.WriteLine("VAL CHA +" + ea.State.GetType());
+                if (ea.State is HungryState)
+                {
+                    HungerMeter = ea.Value;
+                }
+                else if (ea.State is TiredState)
+                {
+                    TiredMeter = ea.Value;
+                }
+            }
         }
     }
 }
