@@ -3,33 +3,47 @@
     x:Name="MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:MyVirtualGirlfriend"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:VM="using:MyVirtualGirlfriend.ViewModel"
     mc:Ignorable="d" Height="900" Width="1600">
+
+    <Page.Resources>
+        <VM:IconConverter x:Key="IconConverter"/>
+        <VM:ProgressBarConverter x:Key="ProgressBarConverter" />
+    </Page.Resources>
+    
     <Page.DataContext>
         <VM:GirlfriendViewModel />
     </Page.DataContext>
-
-
 
     <RelativePanel x:Name="MainRelativePanel" Background="White" Width="{Binding ActualWidth, ElementName=MainWindow, Mode=OneWay}" >
         <Image Source="Assets/Livingroom.jpg" Stretch="UniformToFill" ManipulationMode="None"  />
         
         <ProgressBar x:Name="HappinessProgress" HorizontalAlignment="Left" Height="60" 
-                     VerticalAlignment="Top" Width="300" Background="Black" Opacity="0.7"/>
-        
+                     VerticalAlignment="Top" Width="300" Background="Black" 
+                     Foreground="{Binding HappyMeter, Converter={StaticResource ProgressBarConverter}, ConverterParameter=Happy }" 
+                     Opacity="0.7" Minimum="0" Maximum="300" Value="{Binding HappyMeter, Mode=OneWay}"/>
+        <Image Source="{Binding HappyMeter, Converter={StaticResource IconConverter}}" RelativePanel.RightOf="HappinessProgress" Height="{Binding ActualHeight, ElementName=HappinessProgress}"/>
+
         <ProgressBar x:Name="HungryProgress" RelativePanel.Below="HappinessProgress" Margin="0,20,0,0" 
-                     HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="300" Background="Black" Opacity="0.7" Minimum="0" Maximum="100" Value="{Binding HungerMeter, Mode=OneWay}"/>
+                     HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="300" Background="Black" 
+                     Foreground="{Binding HungerMeter, Converter={StaticResource ProgressBarConverter}, ConverterParameter=Hungry }" 
+                     Opacity="0.7" Minimum="0" Maximum="100" Value="{Binding HungerMeter, Mode=OneWay}"/>
+        <Image Source="Assets/steak-icon.png" RelativePanel.RightOf="HungryProgress" RelativePanel.Below="HappinessProgress" Margin="0,20,0,0" Height="{Binding ActualHeight, ElementName=HungryProgress}"/>
         
         <ProgressBar x:Name="TiredProgress" RelativePanel.Below="HungryProgress" Margin="0,20,0,0" 
-                     HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="300" Background="Black" Opacity="0.7" Minimum="0" Maximum="200" Value="{Binding TiredMeter, Mode=OneWay}"/>
+                     HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="300" Background="Black" 
+                     Foreground="{Binding TiredMeter, Converter={StaticResource ProgressBarConverter}, ConverterParameter=Tired }" 
+                     Opacity="0.7" Minimum="0" Maximum="200" Value="{Binding TiredMeter, Mode=OneWay}"/>
+        <Image Source="Assets/bed-icon.png" RelativePanel.RightOf="TiredProgress" RelativePanel.Below="HungryProgress" Margin="0,20,0,0" Height="{Binding ActualHeight, ElementName=TiredProgress}"/>
         
-        <ProgressBar x:Name="AngerProgress" RelativePanel.Below="TiredProgress" Margin="0,20,0,0" 
-                     HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="300" Background="Black" Opacity="0.7"/>
+        <ProgressBar x:Name="StinkyProgress" RelativePanel.Below="TiredProgress" Margin="0,20,0,0" 
+                     HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="300" 
+                     Foreground="{Binding StinkyMeter, Converter={StaticResource ProgressBarConverter}, ConverterParameter=Stinky }"
+                     Background="Black" Opacity="0.7" Minimum="0" Maximum="150" Value="{Binding StinkyMeter, Mode=OneWay}"/>
         
-        <Image x:Name="ImageGirlFriend" Width="{Binding ActualWidth, ElementName=MainRelativePanel, Mode=OneWay}"
+        <Image x:Name="ImageGirlFriend" RelativePanel.AlignHorizontalCenterWithPanel="True"
                RelativePanel.Below="HappinessProgress" Source="Assets/Girl.png"  />
         
         <Canvas x:Name="ThingsToGiveCanvas" RelativePanel.AlignVerticalCenterWith="ImageGirlFriend" 

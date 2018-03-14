@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MyVirtualGirlfriend.Model;
-using MyVirtualGirlfriendd.Model;
 
 namespace MyVirtualGirlfriend.States
 {
@@ -13,26 +12,28 @@ namespace MyVirtualGirlfriend.States
     {
         public HungryState(Girlfriend girlfriend) : base(girlfriend)
         {
-
+            Task task = Task.Factory.StartNew(() => Hunger());           
         }
 
-        private int hungerMeter = 100;
+        private int hungry = 100;
 
-        public override async Task Hunger()
+        public int Hungry { get { return hungry; } }
+
+        public async Task Hunger()
         {
             while (true)
             {
-                if (hungerMeter > 0)
+                if (hungry > 0)
                 {
-                    hungerMeter--;
-
-                    if (hungerMeter < 30)
+                    //hungry--;
+                    hungry = hungry - 5;
+                    if (hungry < 30)
                     {
 
                         Girlfriend.ChangeState(this);
                     }                    
                     
-                    Girlfriend.OnValueChanged(new ValueEventArgs(this, hungerMeter));
+                    Girlfriend.OnValueChanged(new ValueEventArgs(this, hungry));
                 }
 
                 await Task.Delay(1000);

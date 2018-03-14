@@ -8,12 +8,12 @@ namespace MyVirtualGirlfriend.States
 {
     public interface IGirlfriendState
     {
-        Task Hunger();        
+        void Feed();
 
-        Task Happyness();
+        void PutToBed();
 
-        Task Angryness();
+        void Tickle();
 
-        Task Tiredness();
+        void Kiss();        
     }
 }

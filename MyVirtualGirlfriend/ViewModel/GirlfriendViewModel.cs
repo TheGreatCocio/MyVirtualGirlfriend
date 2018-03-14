@@ -1,6 +1,5 @@
 ﻿using MyVirtualGirlfriend.Model;
 using MyVirtualGirlfriend.States;
-using MyVirtualGirlfriendd.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +16,18 @@ namespace MyVirtualGirlfriend.ViewModel
         private Girlfriend myGirlfriend;
         private int hungerMeter;
         private int tiredMeter;
+        private int happyMeter;
+        private int stinkyMeter;
+
+        public int HappyMeter
+        {
+            get { return happyMeter; }
+            set
+            {
+                happyMeter = value;
+                //OnPropertyChanged();
+            }
+        }
 
         public int HungerMeter
         {
@@ -24,7 +35,7 @@ namespace MyVirtualGirlfriend.ViewModel
             set
             {
                 hungerMeter = value;
-                OnPropertyChanged();
+                //OnPropertyChanged();
             }
         }
 
@@ -34,7 +45,17 @@ namespace MyVirtualGirlfriend.ViewModel
             set
             {
                 tiredMeter = value;
-                OnPropertyChanged();
+                //OnPropertyChanged();
+            }
+        }
+
+        public int StinkyMeter
+        {
+            get { return stinkyMeter; }
+            set
+            {
+                stinkyMeter = value;
+                //OnPropertyChanged();
             }
         }
 
@@ -43,27 +64,14 @@ namespace MyVirtualGirlfriend.ViewModel
             myGirlfriend = new Girlfriend("Michella");
 
             myGirlfriend.ValueChanged += ValueChanged;
-            
-            Task printer = Task.Factory.StartNew(() => Printer());
-        }
-
-        
-
-        public async Task Printer()
-        {
-            while (true)
-            {
-                Debug.WriteLine("Something");
-                await Task.Delay(500);
-            }
-        }
+                        
+        }        
 
         private void ValueChanged(object sender, EventArgs e)
         {
             ValueEventArgs ea = (ValueEventArgs)e;
             if (ea.State != null)
             {
-                Debug.WriteLine("VAL CHA +" + ea.State.GetType());
                 if (ea.State is HungryState)
                 {
                     HungerMeter = ea.Value;
@@ -71,6 +79,14 @@ namespace MyVirtualGirlfriend.ViewModel
                 else if (ea.State is TiredState)
                 {
                     TiredMeter = ea.Value;
+                }
+                else if (ea.State is HappyState)
+                {
+                    HappyMeter = ea.Value;
+                }
+                else if (ea.State is StinkyState)
+                {
+                    StinkyMeter = ea.Value;
                 }
             }
         }

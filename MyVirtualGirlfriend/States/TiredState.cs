@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MyVirtualGirlfriend.Model;
-using MyVirtualGirlfriendd.Model;
 
 namespace MyVirtualGirlfriend.States
 {
@@ -12,22 +12,27 @@ namespace MyVirtualGirlfriend.States
     {
         public TiredState(Girlfriend girlfriend) : base(girlfriend)
         {
+            Task task = Task.Factory.StartNew(() => Tiredness());
         }
 
-        private int tiredMeter = 200;
+        private int tired = 200;
 
-        public override async Task Tiredness()
+        public int Tired { get { return tired; } }
+
+        public async Task Tiredness()
         {
             while (true)
             {
-                if (tiredMeter > 0)
+                if (tired > 0)
                 {
-                    tiredMeter--;
-                    if (tiredMeter < 30)
+                    //tired--;
+                    tired = tired - 5;
+                    if (tired < 30)
                     {
                         Girlfriend.ChangeState(this);
+                        Debug.WriteLine("Im Soooo Tired!");
                     }
-                    Girlfriend.OnValueChanged(new ValueEventArgs(this, tiredMeter));
+                    Girlfriend.OnValueChanged(new ValueEventArgs(this, tired));
                 }
                 await Task.Delay(1000);
             }

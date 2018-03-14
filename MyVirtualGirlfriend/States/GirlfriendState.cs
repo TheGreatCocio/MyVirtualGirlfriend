@@ -11,35 +11,33 @@ namespace MyVirtualGirlfriend.States
     abstract class GirlfriendState : IGirlfriendState
     {       
         private Girlfriend girlfriend;
+        //private IGirlfriendState hungerState, tiredState, stinkyState, happyState;
 
         public Girlfriend Girlfriend { get => girlfriend; set => girlfriend = value; }
 
         public GirlfriendState(Girlfriend girlfriend)
         {
-            Girlfriend = girlfriend;
+            Girlfriend = girlfriend;            
+        }                
 
-            Task hunger = Task.Factory.StartNew(() => Tiredness());
-            Task tiredness = Task.Factory.StartNew(() => Hunger());
-        }        
-
-        public virtual async Task Hunger()
-        {            
-            Debug.WriteLine("Im Hungry");
-        }        
-
-        public virtual async Task Happyness()
+        public void Feed()
         {
-            Debug.WriteLine("Im Happy");
+            throw new NotImplementedException();
         }
 
-        public virtual async Task Angryness()
+        public void PutToBed()
         {
-            Debug.WriteLine("Im Angry");
+            throw new NotImplementedException();
         }
 
-        public virtual async Task Tiredness()
+        public void Tickle()
         {
-            Debug.WriteLine("Im Tired");
+            throw new NotImplementedException();
+        }
+
+        public void Kiss()
+        {
+            throw new NotImplementedException();
         }
     }
 }

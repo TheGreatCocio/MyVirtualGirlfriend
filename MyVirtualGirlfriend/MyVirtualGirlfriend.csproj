@@ -101,13 +101,15 @@
     <Compile Include="Model\Girlfriend.cs" />
     <Compile Include="Model\ValueEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="States\AngryState.cs" />
+    <Compile Include="States\StinkyState.cs" />
     <Compile Include="States\GirlfriendState.cs" />
     <Compile Include="States\HappyState.cs" />
     <Compile Include="States\HungryState.cs" />
     <Compile Include="States\IGirlfriendState.cs" />
     <Compile Include="States\TiredState.cs" />
     <Compile Include="ViewModel\GirlfriendViewModel.cs" />
+    <Compile Include="ViewModel\IconConverter.cs" />
+    <Compile Include="ViewModel\ProgressBarConverter.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -117,8 +119,12 @@
     <None Include="MyVirtualGirlfriend_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\angry-icon.png" />
+    <Content Include="Assets\Bed-icon.png" />
     <Content Include="Assets\Girl.png" />
+    <Content Include="Assets\happy-icon.png" />
     <Content Include="Assets\Livingroom.jpg" />
+    <Content Include="Assets\Steak-icon.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
