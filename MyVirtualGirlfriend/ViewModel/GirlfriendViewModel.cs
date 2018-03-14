@@ -25,7 +25,7 @@ namespace MyVirtualGirlfriend.ViewModel
             set
             {
                 happyMeter = value;
-                //OnPropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -35,7 +35,7 @@ namespace MyVirtualGirlfriend.ViewModel
             set
             {
                 hungerMeter = value;
-                //OnPropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -45,7 +45,7 @@ namespace MyVirtualGirlfriend.ViewModel
             set
             {
                 tiredMeter = value;
-                //OnPropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -55,7 +55,7 @@ namespace MyVirtualGirlfriend.ViewModel
             set
             {
                 stinkyMeter = value;
-                //OnPropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -65,7 +65,27 @@ namespace MyVirtualGirlfriend.ViewModel
 
             myGirlfriend.ValueChanged += ValueChanged;
                         
-        }        
+        }       
+        
+        public void FeedGirlfriend()
+        {
+            myGirlfriend.Feed();
+        }
+
+        public void KissGirlfriend()
+        {
+            myGirlfriend.Kiss();
+        }
+
+        public void PutGirlfriendToBed()
+        {
+            myGirlfriend.Sleep();
+        }
+
+        public void ShowerGirlfriend()
+        {
+            myGirlfriend.Shower();
+        }
 
         private void ValueChanged(object sender, EventArgs e)
         {

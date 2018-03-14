@@ -25,7 +25,10 @@ namespace MyVirtualGirlfriend.States
         
         private int happy;
 
-        public int Happy { get { return happy; } }
+        public int Happy {
+            get { return happy; }
+            set { happy = value; }
+        }
         
         public async Task Happyness()
         {

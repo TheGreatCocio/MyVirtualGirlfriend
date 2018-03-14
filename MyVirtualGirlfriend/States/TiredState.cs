@@ -17,7 +17,10 @@ namespace MyVirtualGirlfriend.States
 
         private int tired = 200;
 
-        public int Tired { get { return tired; } }
+        public int Tired {
+            get { return tired; }
+            set { tired = value; }
+        }
 
         public async Task Tiredness()
         {

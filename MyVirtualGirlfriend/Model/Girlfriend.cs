@@ -10,8 +10,11 @@ namespace MyVirtualGirlfriend.Model
     public class Girlfriend
     {
         private string name;
-        private int happy, hungry, tired, stinky;
-        private IGirlfriendState currentState, hungryState, happyState, tiredState, stinkyState;
+        private IGirlfriendState currentState;
+        private HungryState hungryState;
+        private HappyState happyState;
+        private TiredState tiredState;
+        private StinkyState stinkyState;
 
         public string Name { get => name; set => name = value; }
         public IGirlfriendState CurrentState { get => currentState; set => currentState = value; }
@@ -20,11 +23,31 @@ namespace MyVirtualGirlfriend.Model
         {
             hungryState = new HungryState(this);
             tiredState = new TiredState(this);
-            happyState = new HappyState(this, (HungryState)hungryState, (TiredState)tiredState);
-            stinkyState = new StinkyState(this);           
+            happyState = new HappyState(this, hungryState, tiredState);
+            stinkyState = new StinkyState(this);
 
             CurrentState = happyState;
-        }        
+        }
+
+        public void Feed()
+        {
+            hungryState.Hungry += 50;
+        }
+
+        public void Kiss()
+        {
+            happyState.Happy += 5;
+        }
+
+        public void Sleep()
+        {
+            tiredState.Tired += 150;
+        }
+
+        public void Shower()
+        {
+            stinkyState.Stinky += 100;
+        }
 
         public void ChangeState(IGirlfriendState girlfriendState)
         {

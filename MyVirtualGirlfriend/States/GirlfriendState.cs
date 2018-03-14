@@ -11,7 +11,7 @@ namespace MyVirtualGirlfriend.States
     abstract class GirlfriendState : IGirlfriendState
     {       
         private Girlfriend girlfriend;
-        //private IGirlfriendState hungerState, tiredState, stinkyState, happyState;
+        private IGirlfriendState hungerState, tiredState, stinkyState, happyState;
 
         public Girlfriend Girlfriend { get => girlfriend; set => girlfriend = value; }
 

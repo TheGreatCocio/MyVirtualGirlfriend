@@ -42,22 +42,32 @@
                      HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="300" 
                      Foreground="{Binding StinkyMeter, Converter={StaticResource ProgressBarConverter}, ConverterParameter=Stinky }"
                      Background="Black" Opacity="0.7" Minimum="0" Maximum="150" Value="{Binding StinkyMeter, Mode=OneWay}"/>
+        <Image Source="Assets/shower.png" RelativePanel.RightOf="StinkyProgress" RelativePanel.Below="TiredProgress" Margin="0,20,0,0" Height="{Binding ActualHeight, ElementName=StinkyProgress}"/>
         
         <Image x:Name="ImageGirlFriend" RelativePanel.AlignHorizontalCenterWithPanel="True"
-               RelativePanel.Below="HappinessProgress" Source="Assets/Girl.png"  />
+               RelativePanel.Below="HappinessProgress" Source="Assets/Girl.png" AllowDrop="True" DragOver="Icon_DragOver" Drop="Icon_Drop"/>
         
         <Canvas x:Name="ThingsToGiveCanvas" RelativePanel.AlignVerticalCenterWith="ImageGirlFriend" 
                 Margin="0,350,0,0" Height="100" Opacity="0.7" Background="Black" 
                 Width="{Binding ActualWidth, ElementName=MainRelativePanel, Mode=OneWay}">
-            
+
             <StackPanel HorizontalAlignment="Left" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" 
-                        VerticalAlignment="Top" Width="{Binding ActualWidth, ElementName=MainRelativePanel, Mode=OneWay}"/>
+                        VerticalAlignment="Top" Width="{Binding ActualWidth, ElementName=MainRelativePanel, Mode=OneWay}" Orientation="Horizontal">
+                <Image x:Name="Burger" Source="Assets/salad.png" HorizontalAlignment="Left" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True"/>
+                <Image Source="Assets/burger.png" HorizontalAlignment="Left" Margin="30,0,0,0" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True"/>
+                <Image Source="Assets/water.png" HorizontalAlignment="Left" Margin="20,0,0,0" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True"/>
+            </StackPanel>
         </Canvas>
         <Canvas x:Name="ThingsToDoCanvas" RelativePanel.Below="ThingsToGiveCanvas" Margin="0,80,0,0" 
                 Height="100" Opacity="0.7" Background="Black" Width="{Binding ActualWidth, ElementName=MainRelativePanel, Mode=OneWay}">
-            
+
             <StackPanel HorizontalAlignment="Left" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" 
-                        VerticalAlignment="Top" Width="{Binding ActualWidth, ElementName=MainRelativePanel, Mode=OneWay}"/>
+                        VerticalAlignment="Top" Width="{Binding ActualWidth, ElementName=MainRelativePanel, Mode=OneWay}" Orientation="Horizontal" >
+                <Image Source="Assets/kiss.png" HorizontalAlignment="Left" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True"/>
+                <Image Source="Assets/hand.png" HorizontalAlignment="Left" Margin="30,0,0,0" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True"/>
+                <Image Source="Assets/soap.png" HorizontalAlignment="Left" Margin="30,0,0,0" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True"/>
+                <Image Source="Assets/sleep.png" HorizontalAlignment="Left" Margin="30,0,0,0" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True"/>
+            </StackPanel>      
         </Canvas>
     </RelativePanel>
 </Page>

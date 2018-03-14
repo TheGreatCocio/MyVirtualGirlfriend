@@ -17,7 +17,10 @@ namespace MyVirtualGirlfriend.States
 
         private int hungry = 100;
 
-        public int Hungry { get { return hungry; } }
+        public int Hungry {
+            get { return hungry; }
+            set { hungry = value; }
+        }
 
         public async Task Hunger()
         {

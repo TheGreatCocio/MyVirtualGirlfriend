@@ -1,8 +1,13 @@
-﻿using System;
+﻿using MyVirtualGirlfriend.Model;
+using MyVirtualGirlfriend.States;
+using MyVirtualGirlfriend.ViewModel;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -25,6 +30,17 @@ namespace MyVirtualGirlfriend
         public MainPage()
         {
             this.InitializeComponent();
+        }        
+
+        private void Icon_DragOver(object sender, DragEventArgs e)
+        {
+            e.AcceptedOperation = DataPackageOperation.Move;
+        }
+
+        private void Icon_Drop(object sender, DragEventArgs e)
+        {            
+            GirlfriendViewModel girlfriend = (GirlfriendViewModel)MainWindow.DataContext;
+            girlfriend.FeedGirlfriend();            
         }
     }
 }

@@ -17,6 +17,12 @@ namespace MyVirtualGirlfriend.States
 
         private int stinky = 150;
 
+        public int Stinky
+        {
+            get { return stinky; }
+            set { stinky = value; }
+        }
+
         public async Task Stinkyness()
         {
             while (true)
