@@ -98,7 +98,16 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\ActionItem.cs" />
     <Compile Include="Model\Girlfriend.cs" />
+    <Compile Include="Model\ItemManager.cs" />
+    <Compile Include="Model\Items\Bed.cs" />
+    <Compile Include="Model\Items\Burger.cs" />
+    <Compile Include="Model\Items\Kiss.cs" />
+    <Compile Include="Model\Items\Salad.cs" />
+    <Compile Include="Model\Items\Shower.cs" />
+    <Compile Include="Model\Items\Tickle.cs" />
+    <Compile Include="Model\Items\Water.cs" />
     <Compile Include="Model\ValueEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="States\StinkyState.cs" />
@@ -107,6 +116,7 @@
     <Compile Include="States\HungryState.cs" />
     <Compile Include="States\IGirlfriendState.cs" />
     <Compile Include="States\TiredState.cs" />
+    <Compile Include="ViewModel\ActionItemConverter.cs" />
     <Compile Include="ViewModel\GirlfriendViewModel.cs" />
     <Compile Include="ViewModel\IconConverter.cs" />
     <Compile Include="ViewModel\ProgressBarConverter.cs" />
@@ -132,6 +142,7 @@
     <Content Include="Assets\sleep.png" />
     <Content Include="Assets\soap.png" />
     <Content Include="Assets\Steak-icon.png" />
+    <Content Include="Assets\tuckin.png" />
     <Content Include="Assets\water.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />

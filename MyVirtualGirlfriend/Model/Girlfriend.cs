@@ -26,27 +26,27 @@ namespace MyVirtualGirlfriend.Model
             happyState = new HappyState(this, hungryState, tiredState);
             stinkyState = new StinkyState(this);
 
-            CurrentState = happyState;
+            ChangeState(happyState);
         }
 
-        public void Feed()
+        public void Feed(ActionItem item)
         {
-            hungryState.Hungry += 50;
+            hungryState.Hungry += item.Value;
         }
 
-        public void Kiss()
+        public void Curess(ActionItem item)
         {
-            happyState.Happy += 5;
+            happyState.Happy += item.Value;
         }
 
-        public void Sleep()
+        public void Relax(ActionItem item)
         {
-            tiredState.Tired += 150;
+            tiredState.Tired += item.Value;
         }
 
-        public void Shower()
+        public void CleanUp(ActionItem item)
         {
-            stinkyState.Stinky += 100;
+            stinkyState.Stinky += item.Value;
         }
 
         public void ChangeState(IGirlfriendState girlfriendState)

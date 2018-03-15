@@ -32,15 +32,26 @@ namespace MyVirtualGirlfriend
             this.InitializeComponent();
         }        
 
-        private void Icon_DragOver(object sender, DragEventArgs e)
+        private void Michella_DragOver(object sender, DragEventArgs e)
         {
             e.AcceptedOperation = DataPackageOperation.Move;
         }
 
-        private void Icon_Drop(object sender, DragEventArgs e)
-        {            
+        private void Michella_Drop(object sender, DragEventArgs e)
+        {
+            UIElement element = (UIElement)e.DataView.Properties["item"];
+
+            ActionItemConverter converter = new ActionItemConverter();
+            ActionItem item = (ActionItem)converter.ConvertBack(element, null, null, null);
+
             GirlfriendViewModel girlfriend = (GirlfriendViewModel)MainWindow.DataContext;
-            girlfriend.FeedGirlfriend();            
+
+            girlfriend.HandleInteraction(item);            
+        }
+
+        private void Item_Dragstarting(UIElement sender, DragStartingEventArgs args)
+        {
+            args.Data.Properties.Add("item", sender);
         }
     }
 }

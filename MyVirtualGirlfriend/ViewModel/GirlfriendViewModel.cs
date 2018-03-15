@@ -2,6 +2,7 @@
 using MyVirtualGirlfriend.States;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
@@ -13,11 +14,14 @@ namespace MyVirtualGirlfriend.ViewModel
 {
     public class GirlfriendViewModel : ViewModelBase
     {
+        
         private Girlfriend myGirlfriend;
-        private int hungerMeter;
-        private int tiredMeter;
-        private int happyMeter;
-        private int stinkyMeter;
+        private int hungerMeter, tiredMeter, happyMeter, stinkyMeter;
+        ObservableCollection<ActionItem> itemsToTakeIn = new ObservableCollection<ActionItem>(new ItemManager().ItemsToTake);
+        ObservableCollection<ActionItem> itemsToProvide = new ObservableCollection<ActionItem>(new ItemManager().ItemsToProvide);
+
+        public ObservableCollection<ActionItem> ItemsToTakeIn { get => itemsToTakeIn; set => itemsToTakeIn = value; }
+        public ObservableCollection<ActionItem> ItemsToProvide { get => itemsToProvide; set => itemsToProvide = value; }
 
         public int HappyMeter
         {
@@ -66,26 +70,27 @@ namespace MyVirtualGirlfriend.ViewModel
             myGirlfriend.ValueChanged += ValueChanged;
                         
         }       
-        
-        public void FeedGirlfriend()
-        {
-            myGirlfriend.Feed();
-        }
 
-        public void KissGirlfriend()
+        public void HandleInteraction(ActionItem item)
         {
-            myGirlfriend.Kiss();
-        }
-
-        public void PutGirlfriendToBed()
-        {
-            myGirlfriend.Sleep();
-        }
-
-        public void ShowerGirlfriend()
-        {
-            myGirlfriend.Shower();
-        }
+            switch (item.ActionType)
+            {
+                case ActionItem.Type.Food:
+                    myGirlfriend.Feed(item);
+                    break;
+                case ActionItem.Type.Love:
+                    myGirlfriend.Curess(item);
+                    break;
+                case ActionItem.Type.Relaxing:
+                    myGirlfriend.Relax(item);
+                    break;
+                case ActionItem.Type.Hygiene:
+                    myGirlfriend.CleanUp(item);
+                    break;
+                default:
+                    break;
+            }
+        }        
 
         private void ValueChanged(object sender, EventArgs e)
         {
