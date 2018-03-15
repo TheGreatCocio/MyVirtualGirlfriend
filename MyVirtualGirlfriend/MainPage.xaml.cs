@@ -39,7 +39,7 @@ namespace MyVirtualGirlfriend
 
         private void Michella_Drop(object sender, DragEventArgs e)
         {
-            UIElement element = (UIElement)e.DataView.Properties["item"];
+            UIElement element = (UIElement)e.DataView.Properties["type"];
 
             ActionItemConverter converter = new ActionItemConverter();
             ActionItem item = (ActionItem)converter.ConvertBack(element, null, null, null);
@@ -51,7 +51,7 @@ namespace MyVirtualGirlfriend
 
         private void Item_Dragstarting(UIElement sender, DragStartingEventArgs args)
         {
-            args.Data.Properties.Add("item", sender);
+            args.Data.Properties.Add("type", sender);
         }
     }
 }

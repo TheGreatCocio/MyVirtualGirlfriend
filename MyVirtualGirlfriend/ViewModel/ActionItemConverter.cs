@@ -32,11 +32,11 @@ namespace MyVirtualGirlfriend.ViewModel
 
                 switch (path)
                 {
-                    case "/assets/salad.png": return new Salad();
-                    case "/assets/burger.png": return new Burger();
-                    case "/assets/water.png": return new Water();
-                    case "/assets/sleep.png": return new Bed();
-                    case "/assets/soap.png": return new Shower();
+                    case "/Assets/salad.png": return new Salad();
+                    case "/Assets/burger.png": return new Burger();
+                    case "/Assets/water.png": return new Water();
+                    case "/Assets/sleep.png": return new Bed();
+                    case "/Assets/soap.png": return new Shower();
                     default:
                         break;
                 }

@@ -66,9 +66,9 @@
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl> -->
-                <Image x:Name="Burger" Source="Assets/salad.png" HorizontalAlignment="Left" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True"/>
-                <Image Source="Assets/burger.png" HorizontalAlignment="Left" Margin="30,0,0,0" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True"/>
-                <Image Source="Assets/water.png" HorizontalAlignment="Left" Margin="20,0,0,0" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True"/>
+                <Image x:Name="Burger" Source="Assets/salad.png" HorizontalAlignment="Left" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True" DragStarting="Item_Dragstarting"/>
+                <Image Source="Assets/burger.png" HorizontalAlignment="Left" Margin="30,0,0,0" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True" DragStarting="Item_Dragstarting"/>
+                <Image Source="Assets/water.png" HorizontalAlignment="Left" Margin="20,0,0,0" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True" DragStarting="Item_Dragstarting"/>
             </StackPanel>
         </Canvas>
         <Canvas x:Name="ThingsToDoCanvas" RelativePanel.Below="ThingsToGiveCanvas" Margin="0,80,0,0" 
@@ -89,11 +89,11 @@
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>-->
-                
-                <Image Source="Assets/kiss.png" HorizontalAlignment="Left" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True"/>
-                <Image Source="Assets/hand.png" HorizontalAlignment="Left" Margin="30,0,0,0" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True"/>
-                <Image Source="Assets/soap.png" HorizontalAlignment="Left" Margin="30,0,0,0" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True"/>
-                <Image Source="Assets/sleep.png" HorizontalAlignment="Left" Margin="30,0,0,0" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True"/>
+
+                <Image Source="Assets/kiss.png" HorizontalAlignment="Left" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True" DragStarting="Item_Dragstarting"/>
+                <Image Source="Assets/hand.png" HorizontalAlignment="Left" Margin="30,0,0,0" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True" DragStarting="Item_Dragstarting"/>
+                <Image Source="Assets/soap.png" HorizontalAlignment="Left" Margin="30,0,0,0" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True" DragStarting="Item_Dragstarting"/>
+                <Image Source="Assets/sleep.png" HorizontalAlignment="Left" Margin="30,0,0,0" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True" DragStarting="Item_Dragstarting"/>
             </StackPanel>      
         </Canvas>
     </RelativePanel>
