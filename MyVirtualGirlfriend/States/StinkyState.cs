@@ -15,27 +15,20 @@ namespace MyVirtualGirlfriend.States
             Task task = Task.Factory.StartNew(() => Stinkyness());
         }
 
-        private int stinky = 150;
-
-        public int Stinky
-        {
-            get { return stinky; }
-            set { stinky = value; }
-        }
-
+        private int stinkyDown = -1;
+        
         public async Task Stinkyness()
         {
             while (true)
             {
-                if (stinky > 0)
+                if (Girlfriend.Stinky > 0)
                 {
-                    stinky = stinky - 5;
-                    if (stinky > 50)
+                    if (Girlfriend.Stinky > 50)
                     {
                         Girlfriend.ChangeState(this);
                         Debug.WriteLine("I Need A Shower!");
                     }
-                    Girlfriend.OnValueChanged(new ValueEventArgs(this, stinky));                    
+                    Girlfriend.OnValueChanged(new ValueEventArgs(this, stinkyDown));                    
                 }                
                 await Task.Delay(1000);
             }

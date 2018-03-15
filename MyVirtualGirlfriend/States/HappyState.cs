@@ -10,39 +10,25 @@ namespace MyVirtualGirlfriend.States
 {
     class HappyState : GirlfriendState
     {
-        private HungryState hungry;
-        private TiredState tired;
-
-        internal HungryState Hungry { get => hungry; private set => hungry = value; }
-        internal TiredState Tired { get => tired; private set => tired = value; }
-
-        public HappyState(Girlfriend girlfriend, HungryState hungry, TiredState tired) : base(girlfriend)
+        public HappyState(Girlfriend girlfriend) : base(girlfriend)
         {
-            Tired = tired;
-            Hungry = hungry;
             Task task = Task.Factory.StartNew(() => Happyness());
         }
         
-        private int happy;
-
-        public int Happy {
-            get { return happy; }
-            set { happy = value; }
-        }
+        private int happyDown = -1;        
         
         public async Task Happyness()
         {
             while (true)
             {
-                happy = Hungry.Hungry + Tired.Tired;
-                if (happy > 0)
+                if (Girlfriend.Happy > 0)
                 {
-                    if (happy > 150)
+                    if (Girlfriend.Happy > 200)
                     {
                         Debug.WriteLine("Im Happy!");
                         Girlfriend.ChangeState(this);
                     }
-                    Girlfriend.OnValueChanged(new ValueEventArgs(this, happy));
+                    Girlfriend.OnValueChanged(new ValueEventArgs(this, happyDown));
                 }                                               
                 await Task.Delay(1000);
             }

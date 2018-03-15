@@ -10,10 +10,10 @@ namespace MyVirtualGirlfriend.States
     {
         void Feed();
 
-        void PutToBed();
+        void Curess();
 
-        void Tickle();
+        void Relax();
 
-        void Kiss();        
+        void CleanUp();        
     }
 }

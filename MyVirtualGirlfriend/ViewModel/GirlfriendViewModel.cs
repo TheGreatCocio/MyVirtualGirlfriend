@@ -16,7 +16,7 @@ namespace MyVirtualGirlfriend.ViewModel
     {
         
         private Girlfriend myGirlfriend;
-        private int hungerMeter, tiredMeter, happyMeter, stinkyMeter;
+        private int hungerMeter, tiredMeter, happyMeter, stinkyMeter, loveMeter;
         ObservableCollection<ActionItem> itemsToTakeIn = new ObservableCollection<ActionItem>(new ItemManager().ItemsToTake);
         ObservableCollection<ActionItem> itemsToProvide = new ObservableCollection<ActionItem>(new ItemManager().ItemsToProvide);
 
@@ -59,6 +59,16 @@ namespace MyVirtualGirlfriend.ViewModel
             set
             {
                 stinkyMeter = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public int LoveMeter
+        {
+            get { return loveMeter; }
+            set
+            {
+                loveMeter = value;
                 OnPropertyChanged();
             }
         }
@@ -112,6 +122,10 @@ namespace MyVirtualGirlfriend.ViewModel
                 else if (ea.State is StinkyState)
                 {
                     StinkyMeter = ea.Value;
+                }
+                else if (ea.State is LoveState)
+                {
+                    LoveMeter = ea.Value;
                 }
             }
         }

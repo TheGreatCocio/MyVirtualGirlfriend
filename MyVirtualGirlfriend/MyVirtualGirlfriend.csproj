@@ -110,6 +110,7 @@
     <Compile Include="Model\Items\Water.cs" />
     <Compile Include="Model\ValueEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="States\LoveState.cs" />
     <Compile Include="States\StinkyState.cs" />
     <Compile Include="States\GirlfriendState.cs" />
     <Compile Include="States\HappyState.cs" />
@@ -131,17 +132,20 @@
   <ItemGroup>
     <Content Include="Assets\angry-icon.png" />
     <Content Include="Assets\Bed-icon.png" />
+    <Content Include="Assets\broken-heart.png" />
     <Content Include="Assets\burger.png" />
     <Content Include="Assets\Girl.png" />
-    <Content Include="Assets\hand.png" />
     <Content Include="Assets\happy-icon.png" />
+    <Content Include="Assets\i-love-you.png" />
     <Content Include="Assets\kiss.png" />
     <Content Include="Assets\Livingroom.jpg" />
+    <Content Include="Assets\love.png" />
     <Content Include="Assets\salad.png" />
     <Content Include="Assets\shower.png" />
     <Content Include="Assets\sleep.png" />
     <Content Include="Assets\soap.png" />
     <Content Include="Assets\Steak-icon.png" />
+    <Content Include="Assets\tickle.png" />
     <Content Include="Assets\tuckin.png" />
     <Content Include="Assets\water.png" />
     <Content Include="Properties\Default.rd.xml" />

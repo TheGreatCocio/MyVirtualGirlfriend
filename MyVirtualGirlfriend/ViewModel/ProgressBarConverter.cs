@@ -14,7 +14,7 @@ namespace MyVirtualGirlfriend.ViewModel
             switch (parameter)
             {
                 case "Happy":
-                    if ((int)value < 150)
+                    if ((int)value < 200)
                     {
                         return "red";
                     }
@@ -42,6 +42,15 @@ namespace MyVirtualGirlfriend.ViewModel
                     }
                 case "Stinky":
                     if ((int)value < 50)
+                    {
+                        return "red";
+                    }
+                    else
+                    {
+                        return "green";
+                    }
+                case "Love":
+                    if ((int)value < 70)
                     {
                         return "red";
                     }

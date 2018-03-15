@@ -15,28 +15,21 @@ namespace MyVirtualGirlfriend.States
             Task task = Task.Factory.StartNew(() => Hunger());           
         }
 
-        private int hungry = 100;
-
-        public int Hungry {
-            get { return hungry; }
-            set { hungry = value; }
-        }
+        private int hungryDown = -1;       
 
         public async Task Hunger()
         {
             while (true)
             {
-                if (hungry > 0)
+                if (Girlfriend.Hunger > 0)
                 {
-                    //hungry--;
-                    hungry = hungry - 5;
-                    if (hungry < 30)
+                    if (Girlfriend.Hunger < 30)
                     {
 
                         Girlfriend.ChangeState(this);
                     }                    
                     
-                    Girlfriend.OnValueChanged(new ValueEventArgs(this, hungry));
+                    Girlfriend.OnValueChanged(new ValueEventArgs(this, hungryDown));
                 }
 
                 await Task.Delay(1000);

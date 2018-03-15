@@ -15,27 +15,20 @@ namespace MyVirtualGirlfriend.States
             Task task = Task.Factory.StartNew(() => Tiredness());
         }
 
-        private int tired = 200;
-
-        public int Tired {
-            get { return tired; }
-            set { tired = value; }
-        }
+        private int tiredDown = -1;        
 
         public async Task Tiredness()
         {
             while (true)
             {
-                if (tired > 0)
+                if (Girlfriend.Tired > 0)
                 {
-                    //tired--;
-                    tired = tired - 5;
-                    if (tired < 30)
+                    if (Girlfriend.Tired < 30)
                     {
                         Girlfriend.ChangeState(this);
                         Debug.WriteLine("Im Soooo Tired!");
                     }
-                    Girlfriend.OnValueChanged(new ValueEventArgs(this, tired));
+                    Girlfriend.OnValueChanged(new ValueEventArgs(this, tiredDown));
                 }
                 await Task.Delay(1000);
             }

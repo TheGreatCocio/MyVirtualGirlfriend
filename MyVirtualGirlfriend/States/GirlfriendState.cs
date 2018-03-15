@@ -18,24 +18,24 @@ namespace MyVirtualGirlfriend.States
         public GirlfriendState(Girlfriend girlfriend)
         {
             Girlfriend = girlfriend;            
-        }                
+        }
 
         public void Feed()
         {
             throw new NotImplementedException();
         }
 
-        public void PutToBed()
+        public void Curess()
         {
             throw new NotImplementedException();
         }
 
-        public void Tickle()
+        public void Relax()
         {
             throw new NotImplementedException();
         }
 
-        public void Kiss()
+        public void CleanUp()
         {
             throw new NotImplementedException();
         }

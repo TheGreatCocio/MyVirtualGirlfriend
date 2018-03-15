@@ -11,14 +11,29 @@ namespace MyVirtualGirlfriend.ViewModel
     {        
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            if ((int)value < 150)
+            if (parameter.Equals("Heart"))
             {
-                return "Assets/angry-icon.png";
+                if ((int)value < 70)
+                {
+                    return "Assets/broken-heart.png";
+                }
+                else
+                {
+                    return "Assets/love.png";
+                }
             }
-            else
+            else if (parameter.Equals("Happy"))
             {
-                return "Assets/happy-icon.png";
+                if ((int)value < 200)
+                {
+                    return "Assets/angry-icon.png";
+                }
+                else
+                {
+                    return "Assets/happy-icon.png";
+                }
             }
+            return null;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
