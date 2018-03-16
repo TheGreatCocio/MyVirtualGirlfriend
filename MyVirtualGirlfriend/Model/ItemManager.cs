@@ -20,6 +20,7 @@ namespace MyVirtualGirlfriend.Model
 
             ItemsToProvide.Add(new Kiss());
             ItemsToProvide.Add(new Tickle());
+            ItemsToProvide.Add(new ILoveYou());
             ItemsToProvide.Add(new Shower());
             ItemsToProvide.Add(new Bed());
         }

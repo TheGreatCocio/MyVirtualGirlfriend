@@ -13,9 +13,7 @@ namespace MyVirtualGirlfriend.States
         public HappyState(Girlfriend girlfriend) : base(girlfriend)
         {
             Task task = Task.Factory.StartNew(() => Happyness());
-        }
-        
-        private int happyDown = -1;        
+        }              
         
         public async Task Happyness()
         {
@@ -23,12 +21,11 @@ namespace MyVirtualGirlfriend.States
             {
                 if (Girlfriend.Happy > 0)
                 {
-                    if (Girlfriend.Happy > 200)
+                    if (Girlfriend.Hunger >  30 && Girlfriend.Love > 70 && Girlfriend.Tired > 70 && Girlfriend.Stinky > 50)
                     {
-                        Debug.WriteLine("Im Happy!");
                         Girlfriend.ChangeState(this);
-                    }
-                    Girlfriend.OnValueChanged(new ValueEventArgs(this, happyDown));
+                    }                    
+                    Girlfriend.OnValueChanged(new ValueEventArgs(this, 0));
                 }                                               
                 await Task.Delay(1000);
             }

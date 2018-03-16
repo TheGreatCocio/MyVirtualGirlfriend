@@ -15,7 +15,7 @@ namespace MyVirtualGirlfriend.States
             Task task = Task.Factory.StartNew(() => Stinkyness());
         }
 
-        private int stinkyDown = -1;
+        private int stinkyDown = -2;
         
         public async Task Stinkyness()
         {
@@ -23,10 +23,9 @@ namespace MyVirtualGirlfriend.States
             {
                 if (Girlfriend.Stinky > 0)
                 {
-                    if (Girlfriend.Stinky > 50)
+                    if (Girlfriend.Stinky < 50)
                     {
                         Girlfriend.ChangeState(this);
-                        Debug.WriteLine("I Need A Shower!");
                     }
                     Girlfriend.OnValueChanged(new ValueEventArgs(this, stinkyDown));                    
                 }                

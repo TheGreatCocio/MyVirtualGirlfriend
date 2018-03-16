@@ -14,9 +14,9 @@ namespace MyVirtualGirlfriend.ViewModel
 {
     public class GirlfriendViewModel : ViewModelBase
     {
-        
         private Girlfriend myGirlfriend;
         private int hungerMeter, tiredMeter, happyMeter, stinkyMeter, loveMeter;
+        private string speechBubbleValue;
         ObservableCollection<ActionItem> itemsToTakeIn = new ObservableCollection<ActionItem>(new ItemManager().ItemsToTake);
         ObservableCollection<ActionItem> itemsToProvide = new ObservableCollection<ActionItem>(new ItemManager().ItemsToProvide);
 
@@ -73,12 +73,23 @@ namespace MyVirtualGirlfriend.ViewModel
             }
         }
 
+        public string SpeechBubbleValue {
+            get { return speechBubbleValue; }
+            set
+            {
+                speechBubbleValue = value;
+                OnPropertyChanged();
+            }
+        }
+
         public GirlfriendViewModel()
         {
             myGirlfriend = new Girlfriend("Michella");
 
             myGirlfriend.ValueChanged += ValueChanged;
-                        
+            myGirlfriend.StateChanged += StateChanged;
+
+            SpeechBubbleValue = "Bla";
         }       
 
         public void HandleInteraction(ActionItem item)
@@ -128,6 +139,16 @@ namespace MyVirtualGirlfriend.ViewModel
                     LoveMeter = ea.Value;
                 }
             }
+        }
+
+        private void StateChanged(object sender, EventArgs e)
+        {
+            StateEventArgs sea = (StateEventArgs)e;
+            if (sea.State != null)
+            {
+                SpeechBubbleValue = sea.Value;
+            }
+
         }
     }
 }

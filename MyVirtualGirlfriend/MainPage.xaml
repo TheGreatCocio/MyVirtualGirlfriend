@@ -24,36 +24,40 @@
         <ProgressBar x:Name="HappinessProgress" HorizontalAlignment="Left" Height="60" 
                      VerticalAlignment="Top" Width="300" Background="Black" 
                      Foreground="{Binding HappyMeter, Converter={StaticResource ProgressBarConverter}, ConverterParameter=Happy }" 
-                     Opacity="0.7" Minimum="0" Maximum="450" Value="{Binding HappyMeter, Mode=OneWay}"/>
-        <Image Source="{Binding HappyMeter, Converter={StaticResource IconConverter}, ConverterParameter=Happy}" RelativePanel.RightOf="HappinessProgress" Height="{Binding ActualHeight, ElementName=HappinessProgress}"/>
+                     Opacity="0.7" Minimum="0" Maximum="600" Value="{Binding HappyMeter, Mode=OneWay}"/>
+        <Image Source="{Binding HappyMeter, Converter={StaticResource IconConverter}, ConverterParameter=Happy}" RelativePanel.RightOf="HappinessProgress" Margin="10,0,0,0" Height="{Binding ActualHeight, ElementName=HappinessProgress}"/>
 
         <ProgressBar x:Name="HungryProgress" RelativePanel.Below="HappinessProgress" Margin="0,20,0,0" 
                      HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="300" Background="Black" 
                      Foreground="{Binding HungerMeter, Converter={StaticResource ProgressBarConverter}, ConverterParameter=Hungry }" 
                      Opacity="0.7" Minimum="0" Maximum="100" Value="{Binding HungerMeter, Mode=OneWay}"/>
-        <Image Source="Assets/steak-icon.png" RelativePanel.RightOf="HungryProgress" RelativePanel.Below="HappinessProgress" Margin="0,20,0,0" Height="{Binding ActualHeight, ElementName=HungryProgress}"/>
+        <Image Source="Assets/steak-icon.png" RelativePanel.RightOf="HungryProgress" RelativePanel.Below="HappinessProgress" Margin="10,20,0,0" Height="{Binding ActualHeight, ElementName=HungryProgress}"/>
         
         <ProgressBar x:Name="TiredProgress" RelativePanel.Below="HungryProgress" Margin="0,20,0,0" 
                      HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="300" Background="Black" 
                      Foreground="{Binding TiredMeter, Converter={StaticResource ProgressBarConverter}, ConverterParameter=Tired }" 
                      Opacity="0.7" Minimum="0" Maximum="200" Value="{Binding TiredMeter, Mode=OneWay}"/>
-        <Image Source="Assets/bed-icon.png" RelativePanel.RightOf="TiredProgress" RelativePanel.Below="HungryProgress" Margin="0,20,0,0" Height="{Binding ActualHeight, ElementName=TiredProgress}"/>
+        <Image Source="Assets/bed-icon.png" RelativePanel.RightOf="TiredProgress" RelativePanel.Below="HungryProgress" Margin="10,20,0,0" Height="{Binding ActualHeight, ElementName=TiredProgress}"/>
         
         <ProgressBar x:Name="StinkyProgress" RelativePanel.Below="TiredProgress" Margin="0,20,0,0" 
                      HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="300" 
                      Foreground="{Binding StinkyMeter, Converter={StaticResource ProgressBarConverter}, ConverterParameter=Stinky }"
                      Background="Black" Opacity="0.7" Minimum="0" Maximum="150" Value="{Binding StinkyMeter, Mode=OneWay}"/>
-        <Image Source="Assets/shower.png" RelativePanel.RightOf="StinkyProgress" RelativePanel.Below="TiredProgress" Margin="0,20,0,0" Height="{Binding ActualHeight, ElementName=StinkyProgress}"/>
+        <Image Source="Assets/shower.png" RelativePanel.RightOf="StinkyProgress" RelativePanel.Below="TiredProgress" Margin="10,20,0,0" Height="{Binding ActualHeight, ElementName=StinkyProgress}"/>
 
         <ProgressBar x:Name="LoveProgress" RelativePanel.Below="StinkyProgress" Margin="0,20,0,0" 
                      HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="300" 
                      Foreground="{Binding LoveMeter, Converter={StaticResource ProgressBarConverter}, ConverterParameter=Love }"
                      Background="Black" Opacity="0.7" Minimum="0" Maximum="150" Value="{Binding LoveMeter, Mode=OneWay}"/>
-        <Image Source="{Binding LoveMeter, Converter={StaticResource IconConverter}, ConverterParameter=Heart }" RelativePanel.RightOf="LoveProgress" RelativePanel.Below="StinkyProgress" Margin="0,20,0,0" Height="{Binding ActualHeight, ElementName=LoveProgress}"/>
+        <Image Source="{Binding LoveMeter, Converter={StaticResource IconConverter}, ConverterParameter=Heart }" RelativePanel.RightOf="LoveProgress" RelativePanel.Below="StinkyProgress" Margin="10,20,0,0" Height="{Binding ActualHeight, ElementName=LoveProgress}"/>
 
-        <Image x:Name="ImageGirlFriend" RelativePanel.AlignHorizontalCenterWithPanel="True"
-               RelativePanel.Below="HappinessProgress" Source="Assets/Girl.png" AllowDrop="True" DragOver="Michella_DragOver" Drop="Michella_Drop"/>
-        
+        <Image x:Name="ImageGirlFriend" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="HungryProgress"
+               Source="Assets/Girl.png" AllowDrop="True" DragOver="Michella_DragOver" Drop="Michella_Drop"/>
+        <Image x:Name="ImageSpeechBubble" RelativePanel.RightOf="ImageGirlFriend"
+                Source="Assets/speechbubble.png" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" 
+               Margin="-150,0,0,400" Height="200" Width="300"/>
+        <TextBlock Text="{Binding SpeechBubbleValue, Mode=OneWay}" TextAlignment="Center" RelativePanel.RightOf="ImageSpeechBubble" Margin="-300,220,0,0"/>
+
         <Canvas x:Name="ThingsToGiveCanvas" RelativePanel.AlignVerticalCenterWith="ImageGirlFriend" 
                 Margin="0,350,0,0" Height="100" Opacity="0.7" Background="Black" 
                 Width="{Binding ActualWidth, ElementName=MainRelativePanel, Mode=OneWay}">
@@ -77,7 +81,7 @@
                 <Image Source="Assets/water.png" HorizontalAlignment="Left" Margin="20,0,0,0" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True" DragStarting="Item_Dragstarting"/>
             </StackPanel>
         </Canvas>
-        <Canvas x:Name="ThingsToDoCanvas" RelativePanel.Below="ThingsToGiveCanvas" Margin="0,80,0,0" 
+        <Canvas x:Name="ThingsToDoCanvas" RelativePanel.Below="ThingsToGiveCanvas" Margin="0,35,0,0" 
                 Height="100" Opacity="0.7" Background="Black" Width="{Binding ActualWidth, ElementName=MainRelativePanel, Mode=OneWay}">
 
             <StackPanel HorizontalAlignment="Left" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" 
@@ -98,6 +102,7 @@
 
                 <Image Source="Assets/kiss.png" HorizontalAlignment="Left" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True" DragStarting="Item_Dragstarting"/>
                 <Image Source="Assets/tickle.png" HorizontalAlignment="Left" Margin="30,0,0,0" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True" DragStarting="Item_Dragstarting"/>
+                <Image Source="Assets/iloveyou.png" HorizontalAlignment="Left" Margin="30,0,0,0" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True" DragStarting="Item_Dragstarting"/>
                 <Image Source="Assets/soap.png" HorizontalAlignment="Left" Margin="30,0,0,0" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True" DragStarting="Item_Dragstarting"/>
                 <Image Source="Assets/sleep.png" HorizontalAlignment="Left" Margin="30,0,0,0" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True" DragStarting="Item_Dragstarting"/>
             </StackPanel>      

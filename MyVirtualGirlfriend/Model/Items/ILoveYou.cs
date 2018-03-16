@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace MyVirtualGirlfriend.Model.Items
 {
-    class Water : ActionItem
+    class ILoveYou : ActionItem
     {
-        public Water() : base("water", 5, Type.Food)
+        public ILoveYou() : base("iloveyou", 50, Type.Love)
         {
+
         }
     }
 }

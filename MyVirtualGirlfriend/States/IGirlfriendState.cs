@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyVirtualGirlfriend.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,12 +9,6 @@ namespace MyVirtualGirlfriend.States
 {
     public interface IGirlfriendState
     {
-        void Feed();
-
-        void Curess();
-
-        void Relax();
-
-        void CleanUp();        
+        Girlfriend Girlfriend {get; set;}
     }
 }

@@ -38,6 +38,7 @@ namespace MyVirtualGirlfriend.ViewModel
                     case "/Assets/sleep.png": return new Bed();
                     case "/Assets/soap.png": return new Shower();
                     case "/Assets/kiss.png": return new Kiss();
+                    case "/Assets/iloveyou.png": return new ILoveYou();
                     case "/Assets/tickle.png": return new Tickle();
                     default:
                         break;

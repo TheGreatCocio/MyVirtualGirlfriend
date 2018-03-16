@@ -15,7 +15,7 @@ namespace MyVirtualGirlfriend.States
             Task task = Task.Factory.StartNew(() => Tiredness());
         }
 
-        private int tiredDown = -1;        
+        private int tiredDown = -2;        
 
         public async Task Tiredness()
         {
@@ -23,10 +23,9 @@ namespace MyVirtualGirlfriend.States
             {
                 if (Girlfriend.Tired > 0)
                 {
-                    if (Girlfriend.Tired < 30)
+                    if (Girlfriend.Tired < 70)
                     {
                         Girlfriend.ChangeState(this);
-                        Debug.WriteLine("Im Soooo Tired!");
                     }
                     Girlfriend.OnValueChanged(new ValueEventArgs(this, tiredDown));
                 }

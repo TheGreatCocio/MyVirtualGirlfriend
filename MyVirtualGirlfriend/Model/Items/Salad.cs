@@ -8,7 +8,7 @@ namespace MyVirtualGirlfriend.Model.Items
 {
     class Salad : ActionItem
     {
-        public Salad() : base("salad", 20, Type.Food)
+        public Salad() : base("salad", 15, Type.Food)
         {
 
         }

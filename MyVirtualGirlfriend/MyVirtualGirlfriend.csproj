@@ -103,11 +103,13 @@
     <Compile Include="Model\ItemManager.cs" />
     <Compile Include="Model\Items\Bed.cs" />
     <Compile Include="Model\Items\Burger.cs" />
+    <Compile Include="Model\Items\ILoveYou.cs" />
     <Compile Include="Model\Items\Kiss.cs" />
     <Compile Include="Model\Items\Salad.cs" />
     <Compile Include="Model\Items\Shower.cs" />
     <Compile Include="Model\Items\Tickle.cs" />
     <Compile Include="Model\Items\Water.cs" />
+    <Compile Include="Model\StateEventArgs.cs" />
     <Compile Include="Model\ValueEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="States\LoveState.cs" />
@@ -136,7 +138,7 @@
     <Content Include="Assets\burger.png" />
     <Content Include="Assets\Girl.png" />
     <Content Include="Assets\happy-icon.png" />
-    <Content Include="Assets\i-love-you.png" />
+    <Content Include="Assets\iloveyou.png" />
     <Content Include="Assets\kiss.png" />
     <Content Include="Assets\Livingroom.jpg" />
     <Content Include="Assets\love.png" />
@@ -144,6 +146,8 @@
     <Content Include="Assets\shower.png" />
     <Content Include="Assets\sleep.png" />
     <Content Include="Assets\soap.png" />
+    <Content Include="Assets\speech-bubble.png" />
+    <Content Include="Assets\speechbubble.png" />
     <Content Include="Assets\Steak-icon.png" />
     <Content Include="Assets\tickle.png" />
     <Content Include="Assets\tuckin.png" />

@@ -15,7 +15,7 @@ namespace MyVirtualGirlfriend.States
             Task task = Task.Factory.StartNew(() => Hunger());           
         }
 
-        private int hungryDown = -1;       
+        private int hungryDown = -2;       
 
         public async Task Hunger()
         {
@@ -25,13 +25,10 @@ namespace MyVirtualGirlfriend.States
                 {
                     if (Girlfriend.Hunger < 30)
                     {
-
                         Girlfriend.ChangeState(this);
-                    }                    
-                    
+                    }                                        
                     Girlfriend.OnValueChanged(new ValueEventArgs(this, hungryDown));
                 }
-
                 await Task.Delay(1000);
             }
         }               

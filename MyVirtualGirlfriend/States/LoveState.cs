@@ -15,7 +15,7 @@ namespace MyVirtualGirlfriend.States
             Task task = Task.Factory.StartNew(() => Love());
         }
 
-        private int loveDown = -1;
+        private int loveDown = -2;
 
         public async Task Love()
         {
@@ -23,9 +23,8 @@ namespace MyVirtualGirlfriend.States
             {
                 if (Girlfriend.Love > 0)
                 {
-                    if (Girlfriend.Love > 60)
+                    if (Girlfriend.Love < 70)
                     {
-                        Debug.WriteLine("I Love You!");
                         Girlfriend.ChangeState(this);
                     }
                     Girlfriend.OnValueChanged(new ValueEventArgs(this, loveDown));
