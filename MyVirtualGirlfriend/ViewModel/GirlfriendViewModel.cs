@@ -17,18 +17,24 @@ namespace MyVirtualGirlfriend.ViewModel
         private Girlfriend myGirlfriend;
         private int hungerMeter, tiredMeter, happyMeter, stinkyMeter, loveMeter;
         private string speechBubbleValue;
-        ObservableCollection<ActionItem> itemsToTakeIn = new ObservableCollection<ActionItem>(new ItemManager().ItemsToTake);
-        ObservableCollection<ActionItem> itemsToProvide = new ObservableCollection<ActionItem>(new ItemManager().ItemsToProvide);
 
-        public ObservableCollection<ActionItem> ItemsToTakeIn { get => itemsToTakeIn; set => itemsToTakeIn = value; }
-        public ObservableCollection<ActionItem> ItemsToProvide { get => itemsToProvide; set => itemsToProvide = value; }
+        // Tryed to make these Oberservable Collections to bind to to make it more dynamicaly
+        // But couldent make it work..
 
+        //ObservableCollection<ActionItem> itemsToTakeIn = new ObservableCollection<ActionItem>(new ItemManager().ItemsToTake);
+        //ObservableCollection<ActionItem> itemsToProvide = new ObservableCollection<ActionItem>(new ItemManager().ItemsToProvide);
+
+        //public ObservableCollection<ActionItem> ItemsToTakeIn { get => itemsToTakeIn; set => itemsToTakeIn = value; }
+        //public ObservableCollection<ActionItem> ItemsToProvide { get => itemsToProvide; set => itemsToProvide = value; }
+
+        // These is the ints im binding to in my GUI
         public int HappyMeter
         {
             get { return happyMeter; }
             set
             {
                 happyMeter = value;
+                // Notifies the GUI that there has been a change
                 OnPropertyChanged();
             }
         }
@@ -87,11 +93,12 @@ namespace MyVirtualGirlfriend.ViewModel
             myGirlfriend = new Girlfriend("Michella");
 
             myGirlfriend.ValueChanged += ValueChanged;
-            myGirlfriend.StateChanged += StateChanged;
-
-            SpeechBubbleValue = "Bla";
+            myGirlfriend.StateChanged += StateChanged;            
         }       
 
+        // Handles the interaction made in the GUI And Calls
+        // The respective method.In case the item is Food 
+        // The Feed method is called
         public void HandleInteraction(ActionItem item)
         {
             switch (item.ActionType)
@@ -112,7 +119,9 @@ namespace MyVirtualGirlfriend.ViewModel
                     break;
             }
         }        
-
+        // When the values "Hungry, Tired" and so on changes in the Girlfriend
+        // This method is called to change the values in here so the progress bars
+        // Will be notified that there has beed a change
         private void ValueChanged(object sender, EventArgs e)
         {
             ValueEventArgs ea = (ValueEventArgs)e;
@@ -140,7 +149,9 @@ namespace MyVirtualGirlfriend.ViewModel
                 }
             }
         }
-
+        // When the state Changes this method is called from the Girlfriend 
+        // To let the SpeechBubble know there has been a state Change and 
+        // It Needs to change the Content to the Value from the caller
         private void StateChanged(object sender, EventArgs e)
         {
             StateEventArgs sea = (StateEventArgs)e;

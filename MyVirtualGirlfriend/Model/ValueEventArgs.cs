@@ -5,12 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/// <summary>
+/// A New EventArgs Method
+/// </summary>
 namespace MyVirtualGirlfriend.Model
 {
     public class ValueEventArgs : EventArgs
     {
-
         IGirlfriendState state;
         int value;
 

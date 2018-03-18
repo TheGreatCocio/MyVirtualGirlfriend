@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyVirtualGirlfriend.Model
 {
-    public class Girlfriend
+    public class Girlfriend : IFriend
     {
         private string name, feelings;
         private IGirlfriendState currentState, hungryState, happyState, tiredState, stinkyState, loveState;
@@ -16,7 +16,8 @@ namespace MyVirtualGirlfriend.Model
         public string Name { get => name; set => name = value; }
         public string Feelings { get => feelings; set => feelings = value; }
         public IGirlfriendState CurrentState { get => currentState; set => currentState = value; }
-
+        // A Enhanced Get Set so fx. if hunger after she is 
+        //given food is above 100 its getting set to 100
         public int Hunger
         {
             get { return hunger; }
@@ -47,7 +48,7 @@ namespace MyVirtualGirlfriend.Model
             set { if (value >= 150) love = 150; else love = value; }
         }
 
-
+        // Girldfriend Consctructor
         public Girlfriend( string name)
         {
             hungryState = new HungryState(this);
@@ -60,18 +61,21 @@ namespace MyVirtualGirlfriend.Model
             Tired = 200;
             Happy = 600;
             Stinky = 150;
-            Love = 150;
-
-            //ChangeState(happyState);
+            Love = 150;            
         }
+        // When a value changes 
         public void OnValueChanged(EventArgs e)
         {
+            // Parses e into a ValueEventArg instead
             ValueEventArgs value = (ValueEventArgs)e;
             if (value.State != null)
-            {                
+            {
+                // Looks wich state is calling the method             
                 if (value.State is HungryState)
                 {
+                    // Ads the value of the caller to the current value
                     Hunger = Hunger + value.Value;
+                    // Invokes the Value so GirlfriendViewModel knows there is a change
                     ValueChanged?.Invoke(this, new ValueEventArgs(hungryState, Hunger));
                 }
                 else if (value.State is TiredState)
@@ -96,30 +100,34 @@ namespace MyVirtualGirlfriend.Model
                 }
             }
         }
-
+        // When a state changes
         public void OnStateChanged(EventArgs e)
         {
+            // Parses e into a StateEventArg instead
             StateEventArgs value = (StateEventArgs)e;
             if (value.State != null)
             {
+                // Looks wich state is calling the method             
                 if (value.State is HappyState)
                 {                    
+                    // Sets the Feelings string to what she is feeling
                     Feelings = "Im Soo Happy Babe!";
+                    // Invokes the Feelings String to the GirlfriendViewModel so its knows there is a change
                     StateChanged?.Invoke(this, new StateEventArgs(happyState, Feelings));
                 }
                 else if (value.State is HungryState)
                 {
-                    Feelings = "Im Need Food!";
+                    Feelings = "I Need Food! FEED ME!";
                     StateChanged?.Invoke(this, new StateEventArgs(hungryState, Feelings));
                 }
                 else if (value.State is TiredState)
                 {
-                    Feelings = "Im Need Sleep!";
+                    Feelings = "Im Tired! Find me a Bed!";
                     StateChanged?.Invoke(this, new StateEventArgs(tiredState, Feelings));
                 }
                 else if (value.State is StinkyState)
                 {
-                    Feelings = "Im Stink! I Need a shower!";
+                    Feelings = "I Stink! I Need a shower!";
                     StateChanged?.Invoke(this, new StateEventArgs(stinkyState, Feelings));
                 }
                 else if (value.State is LoveState)
@@ -127,27 +135,16 @@ namespace MyVirtualGirlfriend.Model
                     Feelings = "Love Me Stupid!";
                     StateChanged?.Invoke(this, new StateEventArgs(loveState, Feelings));
                 }
-                //switch (value.State)
-                //{
-                //    case HappyState state: Feelings = "Im Soo Happy Babe!";
-                //        StateChanged?.Invoke(this, new StateEventArgs(happyState, Feelings)); break;
-                //    case HungryState state: Feelings = "Im Need Food!";
-                //        StateChanged?.Invoke(this, new StateEventArgs(hungryState, Feelings)); break;
-                //    case TiredState state: Feelings = "Im Need Sleep!";
-                //        StateChanged?.Invoke(this, new StateEventArgs(tiredState, Feelings)); break;
-                //    case StinkyState state: Feelings = "Im Stink! I Need a shower!";
-                //        StateChanged?.Invoke(this, new StateEventArgs(stinkyState, Feelings)); break;
-                //    case LoveState state: Feelings = "Love Me Stupid!";
-                //        StateChanged?.Invoke(this, new StateEventArgs(loveState, Feelings)); break;
-                //    default:
-                //        break;
-                //}
             }
         }
-
+        // Method thats called when she is given Food
+        // Ads the value of the specific kind of food
+        // Calls the OnValueChanged with the value
+        // The same thing goes for the other methods just
+        // not food.
         public void Feed(ActionItem item)
-        {
-            Hunger += item.Value;
+        {            
+            Hunger += item.Value;            
             OnValueChanged(new ValueEventArgs(hungryState, item.Value));
         }
 
@@ -169,12 +166,15 @@ namespace MyVirtualGirlfriend.Model
             OnValueChanged(new ValueEventArgs(stinkyState, item.Value));
         }
 
+        // When she changes her state, CurrentState is set to the state
+        // And it calls the StateChange with the new State
         public void ChangeState(IGirlfriendState girlfriendState)
         {
             CurrentState = girlfriendState;
             OnStateChanged(new StateEventArgs(CurrentState, ""));
         }
 
+        // Public events to be Invoked
         public event EventHandler ValueChanged;
         public event EventHandler StateChanged;
     }

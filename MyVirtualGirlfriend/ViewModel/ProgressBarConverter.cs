@@ -4,17 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Data;
-
+/// <summary>
+/// A converter to change the color of the progress Bars
+/// </summary>
 namespace MyVirtualGirlfriend.ViewModel
 {
     public class ProgressBarConverter : IValueConverter
     {
+        // A Converting method implemented from IValueConverter
         public object Convert(object value, Type targetType, object parameter, string language)
         {
+            // Takes the parameter send with the call
             switch (parameter)
-            {
+            {   
                 case "Happy":
-                    if ((int)value < 400)
+                    if ((int)value < 200)
                     {
                         return "red";
                     }

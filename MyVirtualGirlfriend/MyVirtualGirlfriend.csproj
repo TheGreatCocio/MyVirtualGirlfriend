@@ -100,6 +100,7 @@
     </Compile>
     <Compile Include="Model\ActionItem.cs" />
     <Compile Include="Model\Girlfriend.cs" />
+    <Compile Include="Model\IFriend.cs" />
     <Compile Include="Model\ItemManager.cs" />
     <Compile Include="Model\Items\Bed.cs" />
     <Compile Include="Model\Items\Burger.cs" />

@@ -55,57 +55,24 @@
                Source="Assets/Girl.png" AllowDrop="True" DragOver="Michella_DragOver" Drop="Michella_Drop"/>
         <Image x:Name="ImageSpeechBubble" RelativePanel.RightOf="ImageGirlFriend"
                 Source="Assets/speechbubble.png" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" 
-               Margin="-150,0,0,400" Height="200" Width="300"/>
+               Margin="-150,0,0,420" Height="200" Width="300"/>
         <TextBlock Text="{Binding SpeechBubbleValue, Mode=OneWay}" TextAlignment="Center" RelativePanel.RightOf="ImageSpeechBubble" Margin="-300,220,0,0"/>
 
-        <Canvas x:Name="ThingsToGiveCanvas" RelativePanel.AlignVerticalCenterWith="ImageGirlFriend" 
-                Margin="0,350,0,0" Height="100" Opacity="0.7" Background="Black" 
-                Width="{Binding ActualWidth, ElementName=MainRelativePanel, Mode=OneWay}">
-
-            <StackPanel HorizontalAlignment="Left" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" 
-                        VerticalAlignment="Top" Width="{Binding ActualWidth, ElementName=MainRelativePanel, Mode=OneWay}" Orientation="Horizontal">
-               <!-- <ItemsControl ItemsSource="{Binding ItemsToTakeIn}" HorizontalAlignment="Center">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapGrid Orientation="Horizontal"/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate x:Name="a">
-                            <Image x:Name="Intakes" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True" Source="{Binding Converter={StaticResource ActionItemConverter}}" DragStarting="Item_Dragstarting"/>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl> -->
-                <Image x:Name="Burger" Source="Assets/salad.png" HorizontalAlignment="Left" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True" DragStarting="Item_Dragstarting"/>
-                <Image Source="Assets/burger.png" HorizontalAlignment="Left" Margin="30,0,0,0" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True" DragStarting="Item_Dragstarting"/>
-                <Image Source="Assets/water.png" HorizontalAlignment="Left" Margin="20,0,0,0" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True" DragStarting="Item_Dragstarting"/>
-            </StackPanel>
-        </Canvas>
-        <Canvas x:Name="ThingsToDoCanvas" RelativePanel.Below="ThingsToGiveCanvas" Margin="0,35,0,0" 
-                Height="100" Opacity="0.7" Background="Black" Width="{Binding ActualWidth, ElementName=MainRelativePanel, Mode=OneWay}">
-
-            <StackPanel HorizontalAlignment="Left" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" 
-                        VerticalAlignment="Top" Width="{Binding ActualWidth, ElementName=MainRelativePanel, Mode=OneWay}" Orientation="Horizontal" >
-                <!--<ItemsControl ItemsSource="{Binding ItemsToProvide}" HorizontalAlignment="Center">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapGrid Orientation="Horizontal"/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate x:Name="s">
-                            <Image x:Name="Intakes" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True" Source="{Binding Converter={StaticResource ActionItemConverter}, Mode=OneWay}" DragStarting="Item_Dragstarting"/>
-
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>-->
-
-                <Image Source="Assets/kiss.png" HorizontalAlignment="Left" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True" DragStarting="Item_Dragstarting"/>
-                <Image Source="Assets/tickle.png" HorizontalAlignment="Left" Margin="30,0,0,0" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True" DragStarting="Item_Dragstarting"/>
-                <Image Source="Assets/iloveyou.png" HorizontalAlignment="Left" Margin="30,0,0,0" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True" DragStarting="Item_Dragstarting"/>
-                <Image Source="Assets/soap.png" HorizontalAlignment="Left" Margin="30,0,0,0" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True" DragStarting="Item_Dragstarting"/>
-                <Image Source="Assets/sleep.png" HorizontalAlignment="Left" Margin="30,0,0,0" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True" DragStarting="Item_Dragstarting"/>
-            </StackPanel>      
-        </Canvas>
+        <StackPanel x:Name="ThingsToGiveCanvas" RelativePanel.AlignVerticalCenterWith="ImageGirlFriend" 
+                Margin="0,350,0,0" Height="100" Opacity="0.7" Background="Black" HorizontalAlignment="Center"
+                Width="{Binding ActualWidth, ElementName=MainRelativePanel, Mode=OneWay}" Orientation="Horizontal" >
+            <Image x:Name="Burger" Source="Assets/salad.png" HorizontalAlignment="Left" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True" DragStarting="Item_Dragstarting"/>
+            <Image Source="Assets/burger.png" HorizontalAlignment="Left" Margin="30,0,0,0" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True" DragStarting="Item_Dragstarting"/>
+            <Image Source="Assets/water.png" HorizontalAlignment="Left" Margin="20,0,0,0" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True" DragStarting="Item_Dragstarting"/>
+            <Image Source="Assets/kiss.png" HorizontalAlignment="Left" Height="{Binding ActualHeight, ElementName=ThingsToGiveCanvas}" CanDrag="True" DragStarting="Item_Dragstarting"/>
+        </StackPanel>
+        <StackPanel  x:Name="ThingsToDoCanvas" RelativePanel.Below="ThingsToGiveCanvas" Margin="0,35,0,0" 
+                Height="100" Opacity="0.7" Background="Black" Width="{Binding ActualWidth, ElementName=MainRelativePanel, Mode=OneWay}" 
+                Orientation="Horizontal" >
+                <Image Source="Assets/tickle.png" Height="{Binding ActualHeight, ElementName=ThingsToDoCanvas}" CanDrag="True" DragStarting="Item_Dragstarting"/>
+                <Image Source="Assets/iloveyou.png" Margin="30,0,0,0" Height="{Binding ActualHeight, ElementName=ThingsToDoCanvas}" CanDrag="True" DragStarting="Item_Dragstarting"/>
+                <Image Source="Assets/soap.png"  Margin="30,0,0,0" Height="{Binding ActualHeight, ElementName=ThingsToDoCanvas}" CanDrag="True" DragStarting="Item_Dragstarting"/>
+            <Image Source="Assets/sleep.png" Margin="30,0,0,0" Height="{Binding ActualHeight, ElementName=ThingsToDoCanvas}" CanDrag="True" DragStarting="Item_Dragstarting"/>
+        </StackPanel>   
     </RelativePanel>
 </Page>
